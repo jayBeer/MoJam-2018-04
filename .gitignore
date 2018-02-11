@@ -1,6 +1,4 @@
-###
 # Unity folders and files
-###
 [Aa]ssets/AssetStoreTools*
 [Bb]uild/
 [Ll]ibrary/
@@ -8,14 +6,8 @@
 [Oo]bj/
 [Tt]emp/
 [Uu]nityGenerated/
-# file on crash reports
-sysinfo.txt
-# Unity3D generated meta files
-*.pidb.meta
 
-###
 # VS/MD solution and project files
-###
 [Ee]xportedObj/
 *.booproj
 *.csproj
@@ -28,14 +20,55 @@ sysinfo.txt
 *.pidb
 .DS_Store
 
-###
-# OS generated
-###
+# Unity3D generated meta files
+*.pidb.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.unitypackage
+
+# Operating System Files
+
+# OSX
 .DS_Store
-.DS_Store?
+.AppleDouble
+.LSOverride
+
+# Thumbnails
 ._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
 .Trashes
-Icon?
-ehthumbs.db
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+# Windows image file caches
 Thumbs.db
+ehthumbs.db
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+# Windows shortcuts
+*.lnk
