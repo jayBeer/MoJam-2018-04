@@ -13,22 +13,29 @@ public class Menu_Logic : MonoBehaviour {
 	[HideInInspector] public Transform Panel_Instruction_Nav_Transform;
 	[HideInInspector] public GameObject[] Panel_Instruction_NavButton_GameObject = new GameObject[2];
 
-	public string Name_Game;
+	[HideInInspector] public string Name_Game;
 	[HideInInspector] public Text Name_Game_TEXT;
-	public string Name_Team;
+	[HideInInspector] public string Name_Team;
 	[HideInInspector] public Text[] Name_Team_TEXT;
-	public string[] Name_TeamMember;
+	[HideInInspector] public string[] Name_TeamMember;
 	[HideInInspector] public Text Name_TeamMember_TEXT;
 	public string Scene_PlayNameID = "game";
 
-	public GameObject Prefab_SceneTranition;
+	public GameInfo myGameInfo;
 
 	// Use this for initialization
 	void Start () {
+		Setup_GameInfo();
 		Setup_Text();
 		Reset_Instruction_Page();
 	}
-
+	void Setup_GameInfo(){
+		Name_Game = myGameInfo.Name_Game;
+		Name_Team = myGameInfo.Name_Team;
+		for(int i = 0; i < myGameInfo.Name_TeamMember.Length; i++){
+			Name_TeamMember[i] = myGameInfo.Name_TeamMember[i];
+		}
+	}
 	void Setup_Text(){
 		Name_Game_TEXT.text = Name_Game;
 		for(int i = 0; i < Name_Team_TEXT.Length; i++){

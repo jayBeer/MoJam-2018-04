@@ -15,27 +15,9 @@ public class Audio_Manager : MonoBehaviour {
 		}
 	}
 
-	[System.Serializable]
-	public class _Music{
-		public string MusicCodeID;
-		public AudioClip Mucic_Clip;
-		public float volume;
-	}
-	public _Music[] Music;
+	public Manager_Audio myManagerAudio;
 	AudioSource myMusic_AudioSource;
-
-	[System.Serializable]
-	public class _SoundEffect{
-		public string SoundCodeID;
-		public AudioClip[] Sound_Clip = new AudioClip[1];
-		public float volumeMin = 1f;
-		public float volumeMax = 1f;
-		public float pitchMin = 1f;
-		public float pitchMax = 1f;
-	}
-	public _SoundEffect[] SoundEffect;
-	int mySFX_AudioSource_NUMBER;
-	AudioSource[] mySFX_AudioSource = new AudioSource[10];
+	AudioSource[] mySFX_AudioSource = new AudioSource[10]; int mySFX_AudioSource_NUMBER;
 	// Use this for initialization
 	void Start () {
 		GameObject _Inst = new GameObject();
@@ -46,31 +28,31 @@ public class Audio_Manager : MonoBehaviour {
 		for(int i = 0; i < mySFX_AudioSource.Length; i++){
 			mySFX_AudioSource[i] = _Inst.AddComponent<AudioSource>() as AudioSource;
 		}
-		for(int i = 0; i < SoundEffect.Length; i++){
-			if(SoundEffect[i].SoundCodeID != string.Empty){
-				if(SoundEffect[i].volumeMin <= 0 && SoundEffect[i].volumeMax <= 0){
-					SoundEffect[i].volumeMin = 1;
-					SoundEffect[i].volumeMax = 1;
+		for(int i = 0; i < myManagerAudio.SoundEffect.Length; i++){
+			if(myManagerAudio.SoundEffect[i].SoundCodeID != string.Empty){
+				if(myManagerAudio.SoundEffect[i].volumeMin <= 0 && myManagerAudio.SoundEffect[i].volumeMax <= 0){
+					myManagerAudio.SoundEffect[i].volumeMin = 1;
+					myManagerAudio.SoundEffect[i].volumeMax = 1;
 				}
-				if(SoundEffect[i].pitchMin <= 0 && SoundEffect[i].pitchMax <= 0){
-					SoundEffect[i].pitchMin = 1;
-					SoundEffect[i].pitchMax = 1;
+				if(myManagerAudio.SoundEffect[i].pitchMin <= 0 && myManagerAudio.SoundEffect[i].pitchMax <= 0){
+					myManagerAudio.SoundEffect[i].pitchMin = 1;
+					myManagerAudio.SoundEffect[i].pitchMax = 1;
 				}
 			}
 		}
 	}
 	public void Call_PlayMusic(string MusicCodeID) {
 		int _id_i = -1;
-		for(int i = 0; i < Music.Length; i++){
-			if(Music[i].MusicCodeID != string.Empty && Music[i].MusicCodeID == MusicCodeID){
+		for(int i = 0; i < myManagerAudio.Music.Length; i++){
+			if(myManagerAudio.Music[i].MusicCodeID != string.Empty && myManagerAudio.Music[i].MusicCodeID == MusicCodeID){
 				_id_i = i;
 				break;
 			}
 		}
 		if(_id_i == -1){return;}
-		myMusic_AudioSource.clip = Music[_id_i].Mucic_Clip;
-		if(Music[_id_i].volume != 0){
-			myMusic_AudioSource.volume = Music[_id_i].volume;
+		myMusic_AudioSource.clip = myManagerAudio.Music[_id_i].Mucic_Clip;
+		if(myManagerAudio.Music[_id_i].volume != 0){
+			myMusic_AudioSource.volume = myManagerAudio.Music[_id_i].volume;
 		}
 		else{
 			myMusic_AudioSource.volume = 1;
@@ -87,17 +69,17 @@ public class Audio_Manager : MonoBehaviour {
 			_distance_f = Camera_SFX_Volume(SoundSource);
 			if(_distance_f <= 0){return;}
 		}
-		for(int i = 0; i < SoundEffect.Length; i++){
-			if(SoundEffect[i].SoundCodeID != string.Empty && SoundEffect[i].SoundCodeID == SoundCodeID){
+		for(int i = 0; i < myManagerAudio.SoundEffect.Length; i++){
+			if(myManagerAudio.SoundEffect[i].SoundCodeID != string.Empty && myManagerAudio.SoundEffect[i].SoundCodeID == SoundCodeID){
 				_id_i = i;
 				break;
 			}
 		}
 		if(_id_i == -1){return;}
-		mySFX_AudioSource[mySFX_AudioSource_NUMBER].volume = Random.Range(SoundEffect[_id_i].volumeMin,SoundEffect[_id_i].volumeMax);
+		mySFX_AudioSource[mySFX_AudioSource_NUMBER].volume = Random.Range(myManagerAudio.SoundEffect[_id_i].volumeMin,myManagerAudio.SoundEffect[_id_i].volumeMax);
 		mySFX_AudioSource[mySFX_AudioSource_NUMBER].volume *= _distance_f;
-		mySFX_AudioSource[mySFX_AudioSource_NUMBER].pitch = Random.Range(SoundEffect[_id_i].pitchMin,SoundEffect[_id_i].pitchMax);
-		mySFX_AudioSource[mySFX_AudioSource_NUMBER].PlayOneShot(SoundEffect[_id_i].Sound_Clip[Random.Range(0,SoundEffect[_id_i].Sound_Clip.Length)]);
+		mySFX_AudioSource[mySFX_AudioSource_NUMBER].pitch = Random.Range(myManagerAudio.SoundEffect[_id_i].pitchMin,myManagerAudio.SoundEffect[_id_i].pitchMax);
+		mySFX_AudioSource[mySFX_AudioSource_NUMBER].PlayOneShot(myManagerAudio.SoundEffect[_id_i].Sound_Clip[Random.Range(0,myManagerAudio.SoundEffect[_id_i].Sound_Clip.Length)]);
 		mySFX_AudioSource_NUMBER++;
 		if(mySFX_AudioSource_NUMBER >= mySFX_AudioSource.Length){
 			mySFX_AudioSource_NUMBER = 0;

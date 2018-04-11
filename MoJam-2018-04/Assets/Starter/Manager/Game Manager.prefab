@@ -52,18 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c5836e3ba14d26afa529e2f9fcaf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Music:
-  - MusicCodeID: test
-    Mucic_Clip: {fileID: 8300000, guid: fec9df27389ea436fb7e19b82a3084b6, type: 3}
-    volume: 0
-  SoundEffect:
-  - SoundCodeID: button
-    Sound_Clip:
-    - {fileID: 8300000, guid: c315a8324639d4b8f89cf740a207890f, type: 3}
-    volumeMin: 0
-    volumeMax: 0
-    pitchMin: 0
-    pitchMax: 0
+  myManagerAudio: {fileID: 11400000, guid: f7197be097f6e43d3b19caab4ace7071, type: 2}
 --- !u!114 &114504769257567012
 MonoBehaviour:
   m_ObjectHideFlags: 1

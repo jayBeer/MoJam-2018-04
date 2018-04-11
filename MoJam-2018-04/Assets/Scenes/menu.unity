@@ -2862,10 +2862,14 @@ MonoBehaviour:
   - Member
   - Member
   - Member
+  - Member
+  - Member
+  - Member
   Name_TeamMember_TEXT: {fileID: 1677531943}
   Scene_PlayNameID: menu
   Prefab_SceneTranition: {fileID: 1483630350401322, guid: 0001a3e8217904184b02462dc037df5e,
     type: 2}
+  myGameInfo: {fileID: 11400000, guid: ab4c9e44bc0c1474f8d45fb85494908b, type: 2}
 --- !u!1 &1446390368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,7 +3319,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1596861130}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
